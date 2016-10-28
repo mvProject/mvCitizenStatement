@@ -381,7 +381,7 @@ namespace mvCitizenStatement
             {
                 PrintSingleMessage();
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException exc)
             {
                 MessageBox.Show("Ви повинні виділити запис!");
             }
@@ -392,7 +392,7 @@ namespace mvCitizenStatement
             {
                 PrintAllMessage();
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException exc)
             {
                 MessageBox.Show("Ви повинні виділити запис!");
             }
