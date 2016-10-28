@@ -95,6 +95,12 @@
     <Compile Include="frmAddEditReferences.designer.cs">
       <DependentUpon>frmAddEditReferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmJournalDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJournalDate.designer.cs">
+      <DependentUpon>frmJournalDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <Compile Include="SQLiteAsync.cs" />
     <EmbeddedResource Include="frmAddEditReferences.resx">
       <DependentUpon>frmAddEditReferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJournalDate.resx">
+      <DependentUpon>frmJournalDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -184,6 +193,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow_two_head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gnome_settings_default_applications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_yellow_open.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

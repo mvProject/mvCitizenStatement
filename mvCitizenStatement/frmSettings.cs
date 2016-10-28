@@ -22,59 +22,77 @@ namespace mvCitizenStatement
             txtImportDir.Text = ImportDir;
             #endregion
             #region Загрузка вкладки Лицевая сторона
-             chCitizenAddress.Text = CitizenAddress;
-             chCitizenAddress.Checked = CitizenAddressView;
+            chId.Text = Id;
+            chId.Checked = IdView;
 
-             chCitizenName.Text = CitizenName;
-             chCitizenName.Checked = CitizenNameView;
+            chSummary.Text = Summary;
+            chSummary.Checked = SummaryView;
+            
+            chCitizenAddress.Text = CitizenAddress;
+            chCitizenAddress.Checked = CitizenAddressView;
 
-             chTreatmentType.Text = TreatmentType;
-             chTreatmentType.Checked = TreatmentTypeView;
+            chCitizenName.Text = CitizenName;
+            chCitizenName.Checked = CitizenNameView;
 
-             chCorrespondentType.Text = CorrespondentType;
-             chCorrespondentType.Checked = CorrespondentTypeView;
+            chCitizenPhone.Text = CitizenPhone;
+            chCitizenPhone.Checked = CitizenPhoneView;
 
-             chControlDate.Text = ControlDate;
-             chControlDate.Checked = ControlDateView;
+            chCitizenEmail.Text = CitizenEmail;
+            chCitizenEmail.Checked = CitizenEmailView;
 
-             chReceivedDate.Text = ReceivedDate;
-             chReceivedDate.Checked = ReceivedDateView;
+            chTreatmentType.Text = TreatmentType;
+            chTreatmentType.Checked = TreatmentTypeView;
 
-             chIndexReg.Text = IndexReg;
-             chIndexReg.Checked = IndexRegView;
+            chCorrespondentType.Text = CorrespondentType;
+            chCorrespondentType.Checked = CorrespondentTypeView;
 
-             chRecievedFrom.Text = RecievedFrom;
-             chRecievedFrom.Checked = RecievedFromView;
+            chCorrespondentSocialStatus.Text = CorrespondentSocialStatus;
+            chCorrespondentSocialStatus.Checked = CorrespondentSocialStatusView;
 
-             chSendingDate.Text = SendingDate;
-             chSendingDate.Checked = SendingDateView;
+            chControlDate.Text = ControlDate;
+            chControlDate.Checked = ControlDateView;
 
-             chIndexDoc.Text = IndexDoc;
-             chIndexDoc.Checked = IndexDocView;
+            chReceivedDate.Text = ReceivedDate;
+            chReceivedDate.Checked = ReceivedDateView;
 
-             chRecieveType.Text = RecieveType;
-             chRecieveType.Checked = RecieveTypeView;
+            chIndexReg.Text = IndexReg;
+            chIndexReg.Checked = IndexRegView;
 
-             chTreatmentsBefore.Text = TreatmentsBefore;
-             chTreatmentsBefore.Checked = TreatmentsBeforeView;
+            chRecievedFrom.Text = RecievedFrom;
+            chRecievedFrom.Checked = RecievedFromView;
 
-             chQuestion.Text = Question;
-             chQuestion.Checked = QuestionView;
+            chSendingDate.Text = SendingDate;
+            chSendingDate.Checked = SendingDateView;
 
-             chSubquestion.Text = Subquestion;
-             chSubquestion.Checked = SubquestionView;
+            chIndexDoc.Text = IndexDoc;
+            chIndexDoc.Checked = IndexDocView;
 
-             chResolution.Text = Resolution;
-             chResolution.Checked = ResolutionView;
+            chRecieveType.Text = RecieveType;
+            chRecieveType.Checked = RecieveTypeView;
 
-             chResolutionAuthor.Text = ResolutionAuthor;
-             chResolutionAuthor.Checked = ResolutionAuthorView;
+            chRecieveSign.Text = RecieveSign;
+            chRecieveSign.Checked = RecieveSignView;
 
-             chCorrespondentCategory.Text = CorrespondentCategory;
-             chCorrespondentCategory.Checked = CorrespondentCategoryView;
+            chTreatmentsBefore.Text = TreatmentsBefore;
+            chTreatmentsBefore.Checked = TreatmentsBeforeView;
 
-             chExecuteDaysCount.Text = ExecuteDaysCount;
-             chExecuteDaysCount.Checked = ExecuteDaysCountView;
+            chQuestion.Text = Question;
+            chQuestion.Checked = QuestionView;
+
+            chSubquestion.Text = Subquestion;
+            chSubquestion.Checked = SubquestionView;
+
+            chResolution.Text = Resolution;
+            chResolution.Checked = ResolutionView;
+
+            chResolutionAuthor.Text = ResolutionAuthor;
+            chResolutionAuthor.Checked = ResolutionAuthorView;
+
+            chCorrespondentCategory.Text = CorrespondentCategory;
+            chCorrespondentCategory.Checked = CorrespondentCategoryView;
+
+            chExecuteDaysCount.Text = ExecuteDaysCount;
+            chExecuteDaysCount.Checked = ExecuteDaysCountView;
 
             #endregion
             #region Загрузка режима работы и открытой вкладки при старте
@@ -115,7 +133,7 @@ namespace mvCitizenStatement
             chController.Text = Controller;
             chController.Checked = ControllerView;
 
-            chCase.Text = CaseSecond;
+            chCase.Text = Case;
             chCase.Checked = CaseView;
 
             chVolume.Text = Volume;
@@ -124,14 +142,6 @@ namespace mvCitizenStatement
             chPagesCount.Text = PagesCount;
             chPagesCount.Checked = PagesCountView;
 
-            chFund.Text = Fund;
-            chFund.Checked = FundView;
-
-            chReview.Text = Review;
-            chReview.Checked = ReviewView;
-
-            chCaseSecond.Text = CaseSecond;
-            chCaseSecond.Checked = CaseSecondView;
             #endregion
         }
         /// <summary>
@@ -204,31 +214,38 @@ namespace mvCitizenStatement
             PagesCount = chPagesCount.Text;
             PagesCountView = chPagesCount.Checked;
 
-            Fund = chFund.Text;
-            FundView = chFund.Checked;
-
-            Review = chReview.Text;
-            ReviewView = chReview.Checked;
-
-            CaseSecond = chCaseSecond.Text;
-            CaseSecondView = chCaseSecond.Checked;
             #endregion
             #region Сохранение режима работы и открытой вкладки при старте
             WorkingModeStart = cbWorkingMode.SelectedItem.ToString();
             WorkingModeIndex = cbWorkingMode.SelectedIndex;
             #endregion
             #region Сохранение вкладки Лицевая сторона
+            Id = chId.Text;
+            IdView = chId.Checked;
+
+            Summary = chSummary.Text;
+            SummaryView = chSummary.Checked;
+
             CitizenAddress = chCitizenAddress.Text;
             CitizenAddressView = chCitizenAddress.Checked;
 
             CitizenName = chCitizenName.Text;
             CitizenNameView = chCitizenName.Checked;
 
+            CitizenPhone = chCitizenPhone.Text;
+            CitizenPhoneView = chCitizenPhone.Checked;
+
+            CitizenEmail = chCitizenEmail.Text;
+            CitizenEmailView = chCitizenEmail.Checked;
+
             TreatmentType = chTreatmentType.Text;
             TreatmentTypeView = chTreatmentType.Checked;
 
             CorrespondentType = chCorrespondentType.Text;
             CorrespondentTypeView = chCorrespondentType.Checked;
+
+            CorrespondentSocialStatus = chCorrespondentSocialStatus.Text;
+            CorrespondentSocialStatusView = chCorrespondentSocialStatus.Checked;
 
             ControlDate = chControlDate.Text;
             ControlDateView = chControlDate.Checked;
@@ -250,6 +267,9 @@ namespace mvCitizenStatement
 
             RecieveType = chRecieveType.Text;
             RecieveTypeView = chRecieveType.Checked;
+
+            RecieveSign = chRecieveSign.Text;
+            RecieveSignView = chRecieveSign.Checked;
 
             TreatmentsBefore = chTreatmentsBefore.Text;
             TreatmentsBeforeView = chTreatmentsBefore.Checked;

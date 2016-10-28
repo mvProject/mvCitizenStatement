@@ -27,31 +27,36 @@ namespace mvCitizenStatement
             [PrimaryKey, AutoIncrement]
             public int Id { get; set; }
             //front part
+            public DateTime ReceivedDate { get; set; }
+            public DateTime ControlDate { get; set; }
+
             public string CitizenAddress { get; set; }
             public string CitizenName { get; set; }
+            public string CitizenPhone { get; set; }
+            public string CitizenEmail { get; set; }
             public string TreatmentType { get; set; }
             public string CorrespondentType { get; set; }
-            public string ControlDate { get; set; }
-            public string ReceivedDate { get; set; }
+            public string RecieveSign { get; set; }
             public string IndexReg { get; set; }
             public string RecievedFrom { get; set; }
-            public string SendingDate { get; set; }
+            public DateTime? SendingDate { get; set; }
             public string IndexDoc { get; set; }
             public string RecieveType { get; set; }
+            public string Summary { get; set; }
             public string TreatmentsBefore { get; set; }
             public string Question { get; set; }
             public string Subquestion { get; set; }
+            public string CorrespondentCategory { get; set; }
+            public string CorrespondentSocialStatus { get; set; }
             public string Resolution { get; set; }
             public string ResolutionAuthor { get; set; }
-            public string CorrespondentCategory { get; set; }
             public string ExecuteDaysCount { get; set; }
-
             //back part
-            public string DateWorking { get; set; }
+            public DateTime? DateWorking { get; set; }
             public string Executor { get; set; }
             public string WorkingNote { get; set; }
             public string ControlState { get; set; }
-            public string DateChecked { get; set; }
+            public DateTime? DateChecked { get; set; }
             public string WorkerChecked { get; set; }
             public string WorkingDate { get; set; }
             public string CitizenData { get; set; }
@@ -61,28 +66,6 @@ namespace mvCitizenStatement
             public string Case { get; set; }
             public string Volume { get; set; }
             public string PagesCount { get; set; }
-            public string Fund { get; set; }
-            public string Review { get; set; }
-            public string CaseSecond { get; set; }
-            //[MaxLength(150), NotNull]
-            //public string MessageNumberIn { get; set; }
-            //public DateTime? MessageDateIn { get; set; }
-            //[MaxLength(150)]
-            //public string MessageType { get; set; }
-            //public string MessageOrganization { get; set; }
-            //[MaxLength(150)]
-            //public string MessageNumberOut { get; set; }
-            //public DateTime? MessageDateOut { get; set; }
-            //public string MessageSummary { get; set; }
-            //public string MessageExecutant { get; set; }
-            //public string MessageResolution { get; set; }
-            //public string MessageNumberOutOur { get; set; }
-            //public DateTime? MessageDateOutOur { get; set; }
-            //public DateTime? MessageExecutionDate { get; set; }
-            //[MaxLength(15)]
-            //public string MessageControl { get; set; }
-            //public string MessageExecution { get; set; }
-            //public DateTime? MessageControlDate { get; set; }
         }
 
         #region Дополнительные справочники классы	    
@@ -184,6 +167,22 @@ namespace mvCitizenStatement
         public class Agreeds : References
         {
         }
+        /// <summary>
+        /// Класс описывающий таблицу Признак поступления
+        /// id - уникальный ключ
+        /// ItemName - Наименование исполнителя
+        /// </summary>
+        public class RecieveSigns : References
+        {
+        }
+        /// <summary>
+        /// Класс описывающий таблицу Статус заявителя
+        /// id - уникальный ключ
+        /// ItemName - Наименование исполнителя
+        /// </summary>
+        public class CorrespondentSocialStatuses : References
+        {
+        }
         #endregion
 
         #region Базовые операции
@@ -193,21 +192,38 @@ namespace mvCitizenStatement
         /// <param name="filename">полный путь и название базы данных</param>
         public static void CreateNewTable(string filename)
         {
-            using (var db = new SQLiteConnection(filename))
+            try
             {
-                db.CreateTable<MessageCitizen>();
-                db.CreateTable<Executants>();
-                db.CreateTable<Organizations>();
-                db.CreateTable<DocumentTypes>();
-                db.CreateTable<Resolutions>();
-                db.CreateTable<Summarys>();
-                db.CreateTable<TreatmentTypes>();
-                db.CreateTable<CorrespondentTypes>();
-                db.CreateTable<RecieveTypes>();
-                db.CreateTable<CorrespondentCategories>();
-                db.CreateTable<SubquestionsIndexes>();
-                db.CreateTable<Agreeds>();
-                _filename = filename;
+                using (var db = new SQLiteConnection(filename))
+                {
+                    db.CreateTable<MessageCitizen>();
+                    db.CreateTable<Executants>();
+                    db.CreateTable<Organizations>();
+                    db.CreateTable<Resolutions>();
+                    db.CreateTable<Summarys>();
+                    db.CreateTable<TreatmentTypes>();
+                    db.CreateTable<CorrespondentTypes>();
+                    db.CreateTable<RecieveTypes>();
+                    db.CreateTable<CorrespondentCategories>();
+                    db.CreateTable<SubquestionsIndexes>();
+                    db.CreateTable<Agreeds>();
+                    db.CreateTable<RecieveSigns>();
+                    db.CreateTable<CorrespondentSocialStatuses>();
+                    _filename = filename;
+                    MessageBox.Show("Нова база даних створена!\nТепер Ви можете відкрити її для роботи!");
+                }
+            }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом!\n"+ _filename);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
         /// <summary>
@@ -217,12 +233,27 @@ namespace mvCitizenStatement
         /// <param name="item">добавляемый элемент</param>
         public static void AddItem<T>(T item)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    db.Insert(item);
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        db.Insert(item);
+                    }
                 }
+            }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         /// <summary>
@@ -232,10 +263,26 @@ namespace mvCitizenStatement
         /// <param name="item">обновляемый элемент</param>
         public static void UpdateItem<T>(T item)
         {
-            using (var db = new SQLiteConnection(_filename))
+            try
             {
-                db.Update(item);
+                using (var db = new SQLiteConnection(_filename))
+                {
+                    db.Update(item);
+                }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         /// <summary>
         /// Удаление элемента указанного типа с указанным id
@@ -244,10 +291,26 @@ namespace mvCitizenStatement
         /// <param name="id">id элемента для удаления</param>
         public static void DeleteItem<T>(int id)
         {
-            using (var db = new SQLiteConnection(_filename))
+            try
             {
-                db.Delete<T>(id);
+                using (var db = new SQLiteConnection(_filename))
+                {
+                    db.Delete<T>(id);
+                }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         /// <summary>
         /// Импорт элементов указанного типа 
@@ -256,126 +319,226 @@ namespace mvCitizenStatement
         /// <param name="item">Список импортируемых элементов</param>
         public static void ImportItem<T>(List<T> item)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    db.RunInTransaction(() =>
+                    using (var db = new SQLiteConnection(_filename))
                     {
-                        db.InsertAll(item);
-                    });
+                        db.RunInTransaction(() =>
+                        {
+                            db.InsertAll(item);
+                        });
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         #endregion
 
-        #region Справочники "Входящие" - методы
+        #region Справочник методы
         /// <summary>
-        /// Получить все записи из таблицы "Входящие" в выбраном файле базы данных
+        /// Получить все записи из таблицы в выбраном файле базы данных
         /// </summary>
         /// <param name="filename">имя файла базы данных</param>
-        /// <returns>список записей таблицы "Входящие"</returns>
+        /// <returns>список записей таблицы</returns>
         public static List<MessageCitizen> OpenTableMessage(string filename)
         {
             _filename = filename;
             return ShowMessageData();
         }
         /// <summary>
-        /// Получить все записи из таблицы "Входящие" с сортировкой по дате
+        /// Получить все записи из таблицы с сортировкой по дате
         /// </summary>
-        /// <returns>список записей таблицы "Входящие"</returns>
+        /// <returns>список записей таблицы</returns>
         public static List<MessageCitizen> ShowMessageData()
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
-                {
-                    var all = db.Table<MessageCitizen>().OrderByDescending(x => x.WorkingDate).ThenByDescending(x => x.Id).ToList();
-                    return all;
-                }
+               if (_filename != null)
+                  {
+                     using (var db = new SQLiteConnection(_filename))
+                      {
+                         var all = db.Table<MessageCitizen>().OrderByDescending(x => x.ReceivedDate).ThenByDescending(x => x.Id).ToList();
+                         return all;
+                      }
+                  }
+            }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show("Не удалось открыть таблицу из файла - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return null;
         }
         /// <summary>
-        /// Получить записи из таблицы "Входящие" в указаном интрвале дат
+        /// Получить записи из таблицы в указаном интрвале дат
         /// </summary>
         /// <param name="start">дата начала интервала</param>
         /// <param name="end">дата конца интервала</param>
         /// <returns>список записей соответствующих введеному интервалу</returns>
         public static List<MessageCitizen> ShowMessageDataByDate(DateTime start, DateTime end)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    //var p = from s in db.Table<Message>()
-                    //        where (s.MessageDateIn >= start && s.MessageDateIn <= end)
-                    //        select s;
-                    //return p.OrderByDescending(x => x.MessageDateIn).ThenByDescending(x => x.Id).ToList();
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var p = from s in db.Table<MessageCitizen>()
+                                where (s.ReceivedDate >= start && s.ReceivedDate <= end)
+                                select s;
+                        return p.OrderByDescending(x => x.ReceivedDate).ThenByDescending(x => x.Id).ToList();
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         /// <summary>
-        /// Получить данные одной записи с указанным id из таблицы "Входящие"
+        /// Получить данные одной записи с указанным id из таблицы
         /// </summary>
         /// <param name="id">id требуемой записи</param>
         /// <returns>выбранная запись из таблицы</returns>
         public static MessageCitizen GetSingleItem(int id)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    var item = db.Get<MessageCitizen>(id);
-                    return item;
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var item = db.Get<MessageCitizen>(id);
+                        return item;
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         /// <summary>
-        /// Поиск строки в таблице "Входящие"
+        /// Поиск строки в таблице
         /// </summary>
         /// <param name="str">строка которую будем искать</param>
         /// <returns>список записей соответствующих искомой строке</returns>
         public static List<MessageCitizen> FindItems(string str)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    //var p = from s in db.Table<Message>()
-                    //        where (s.MessageNumberIn.Contains(str) ||
-                    //               s.MessageNumberOut.Contains(str) ||
-                    //               s.MessageExecutant.Contains(str) ||
-                    //               s.MessageOrganization.Contains(str) ||
-                    //               s.MessageSummary.Contains(str) ||
-                    //               s.MessageResolution.Contains(str) ||
-                    //               s.MessageExecution.Contains(str) ||
-                    //               s.MessageType.Contains(str))
-                    //        select s;
-                    //return p.OrderByDescending(x => x.MessageDateIn).ThenByDescending(x => x.Id).ToList();
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var p = from s in db.Table<MessageCitizen>()
+                                where (s.CitizenAddress.Contains(str) ||
+                                       s.CitizenName.Contains(str) ||
+                                       s.RecievedFrom.Contains(str) ||
+                                       s.CorrespondentCategory.Contains(str) ||
+                                       s.CorrespondentSocialStatus.Contains(str) ||
+                                       s.CorrespondentType.Contains(str) ||
+                                       s.RecieveSign.Contains(str) ||
+                                       s.Executor.Contains(str) ||
+                                       s.TreatmentType.Contains(str))
+                                select s;
+                        return p.OrderByDescending(x => x.ReceivedDate).ThenByDescending(x => x.Id).ToList();
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         /// <summary>
-        /// Получить все записи из таблицы "Входящие" со значением "На контроле"
+        /// Получить все записи из таблицы со значением "На контроле"
         /// </summary>
         /// <param name="str">Строка-условие (На контроле)</param>
         /// <returns>список записей соответствующих условию</returns>
         public static List<MessageCitizen> FindItemsOnControl(string str)
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    //var p = from s in db.Table<Message>()
-                    //        where (s.MessageControl.Contains(str))
-                    //        select s;
-                    //return p.OrderByDescending(x => x.MessageDateIn).ThenByDescending(x => x.Id).ToList();
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        //var p = from s in db.Table<Message>()
+                        //        where (s.MessageControl.Contains(str))
+                        //        select s;
+                        //return p.OrderByDescending(x => x.MessageDateIn).ThenByDescending(x => x.Id).ToList();
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         #endregion
@@ -410,14 +573,34 @@ namespace mvCitizenStatement
         /// <returns>список записей указаной таблицы</returns>
         public static List<T> ShowItemsData<T>() where T : References, new()
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    var all = db.Table<T>().OrderBy(x => x.ItemName).ToList();
-                    return all;
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var all = db.Table<T>().OrderBy(x => x.ItemName).ToList();
+                        return all;
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show("Не удалось открыть таблицу из файла - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         /// <summary>
@@ -428,14 +611,30 @@ namespace mvCitizenStatement
         /// <returns>запись из указанной таблицы</returns>
         public static T GetSingleItem<T>(int id) where T : References, new()
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    var item = db.Get<T>(id);
-                    return item;
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var item = db.Get<T>(id);
+                        return item;
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             return null;
         }
         /// <summary>
@@ -446,16 +645,32 @@ namespace mvCitizenStatement
         /// <returns>список записей соответствующих искомой строке</returns>
         public static List<T> FindItems<T>(string str) where T : References, new()
         {
-            if (_filename != null)
+            try
             {
-                using (var db = new SQLiteConnection(_filename))
+                if (_filename != null)
                 {
-                    var p = from s in db.Table<T>()
-                            where (s.ItemName.Contains(str))
-                            select s;
-                    return p.ToList();
+                    using (var db = new SQLiteConnection(_filename))
+                    {
+                        var p = from s in db.Table<T>()
+                                where (s.ItemName.Contains(str))
+                                select s;
+                        return p.ToList();
+                    }
                 }
             }
+            catch (DllNotFoundException e)
+            {
+                MessageBox.Show("Не обнаружена библиотека - sqlite3.dll!");
+            }
+            catch (EntryPointNotFoundException e)
+            {
+                MessageBox.Show("Нет связи с файлом - \n" + _filename);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+ 
             return null;
         }
         #endregion
@@ -638,7 +853,6 @@ namespace mvCitizenStatement
             }
 
         }
-
         private static void ImportSuccessMessage(object count)
         {
             MessageBox.Show("Импортировано записей - " + count.ToString());

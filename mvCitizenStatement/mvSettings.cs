@@ -49,11 +49,11 @@ namespace mvCitizenStatement
         /// <summary>
         /// Переменная хранящая начальную дату для журнала
         /// </summary>
-        public static DateTime startPeriod;
+        public static DateTime startPeriod = DateTime.Now;
         /// <summary>
         /// Переменная хранящая конечную дату для журнала
         /// </summary>
-        public static DateTime endPeriod;
+        public static DateTime endPeriod = DateTime.Now;
 
 
 
@@ -86,29 +86,40 @@ namespace mvCitizenStatement
         public static string ImportDir = Application.StartupPath + "\\Import\\";
         #endregion
         #region Настройки программы Лицевая сторона
+        public static string Id = "Ид";
         public static string CitizenAddress = "Адреса";
         public static string CitizenName = "Кореспондент";
+        public static string CitizenPhone = "Телефон";
+        public static string CitizenEmail = "Електронна адреса";
         public static string TreatmentType = "Тип звернення";
         public static string CorrespondentType = "Тип заявника";
+        public static string CorrespondentSocialStatus = "Соціальний стан заявника";
         public static string ControlDate = "Контроль";
+        public static string Summary = "Короткий зміст";
         public static string ReceivedDate = "Дата отримання";
         public static string IndexReg = "Реєстраційний індекс";
         public static string RecievedFrom = "Звідки отримано";
         public static string SendingDate = "Дата надіслання";
         public static string IndexDoc = "Індекс документа";
         public static string RecieveType = "Тип отримання";
+        public static string RecieveSign = "Ознака надходження";
         public static string TreatmentsBefore = "Попередні звернення";
         public static string Question = "Питання";
         public static string Subquestion = "Підпитання";
         public static string Resolution = "Резолюція";
         public static string ResolutionAuthor = "Автор резолюції";
         public static string CorrespondentCategory = "Категорія";
-        public static string ExecuteDaysCount = "Кількість днів";
+        public static string ExecuteDaysCount = "Кількість днів"; 
 
+        public static bool IdView = true;
+        public static bool SummaryView = true;
         public static bool CitizenAddressView = true;
         public static bool CitizenNameView = true;
+        public static bool CitizenPhoneView = true;
+        public static bool CitizenEmailView = true;
         public static bool TreatmentTypeView = true;
         public static bool CorrespondentTypeView = true;
+        public static bool CorrespondentSocialStatusView = true;
         public static bool ControlDateView = true;
         public static bool ReceivedDateView = true;
         public static bool IndexRegView = true;
@@ -116,6 +127,7 @@ namespace mvCitizenStatement
         public static bool SendingDateView = true;
         public static bool IndexDocView = true;
         public static bool RecieveTypeView = true;
+        public static bool RecieveSignView = true;
         public static bool TreatmentsBeforeView = true;
         public static bool QuestionView = true;
         public static bool SubquestionView = true;
@@ -142,9 +154,6 @@ namespace mvCitizenStatement
         public static bool CaseView = true;
         public static bool VolumeView = true;
         public static bool PagesCountView = true;
-        public static bool FundView = true;
-        public static bool ReviewView = true;
-        public static bool CaseSecondView = true;
 
         public static string DateWorking = "Дата виконання";
         public static string Executor = "Виконавець";
@@ -160,9 +169,6 @@ namespace mvCitizenStatement
         public static string Case = "Справа";
         public static string Volume = "Том";
         public static string PagesCount = "Аркушів";
-        public static string Fund = "Фонд";
-        public static string Review = "Опис";
-        public static string CaseSecond = "Справа";
         #endregion
 
         /// <summary>
@@ -185,81 +191,120 @@ namespace mvCitizenStatement
             #endregion
             #region Сохранение настроек отображения полей в Лицевая сторона
 
+            ini.IniWriteValue("Frontside", "Id", Id);
+            ini.IniWriteValue("Frontside", "IdView", IdView.ToString());
+
+            ini.IniWriteValue("Frontside", "Summary", Summary);
+            ini.IniWriteValue("Frontside", "SummaryView", SummaryView.ToString());
+
             ini.IniWriteValue("Frontside", "CitizenAddress", CitizenAddress);
-            ini.IniWriteValue("Frontside", "CitizenName", CitizenName);
-            ini.IniWriteValue("Frontside", "TreatmentType", TreatmentType);
-            ini.IniWriteValue("Frontside", "CorrespondentType", CorrespondentType);
-            ini.IniWriteValue("Frontside", "ControlDate", ControlDate);
-            ini.IniWriteValue("Frontside", "ReceivedDate", ReceivedDate);
-            ini.IniWriteValue("Frontside", "IndexReg", IndexReg);
-            ini.IniWriteValue("Frontside", "RecievedFrom", RecievedFrom);
-            ini.IniWriteValue("Frontside", "SendingDate", SendingDate);
-            ini.IniWriteValue("Frontside", "IndexDoc", IndexDoc);
-            ini.IniWriteValue("Frontside", "RecieveType", RecieveType);
-            ini.IniWriteValue("Frontside", "TreatmentsBefore", TreatmentsBefore);
-            ini.IniWriteValue("Frontside", "Question", Question);
-            ini.IniWriteValue("Frontside", "Subquestion", Subquestion);
-            ini.IniWriteValue("Frontside", "Resolution", Resolution);
-            ini.IniWriteValue("Frontside", "ResolutionAuthor", ResolutionAuthor);
-            ini.IniWriteValue("Frontside", "CorrespondentCategory", CorrespondentCategory);
-            ini.IniWriteValue("Frontside", "ExecuteDaysCount", ExecuteDaysCount);
-
             ini.IniWriteValue("Frontside", "CitizenAddressView", CitizenAddressView.ToString());
+
+            ini.IniWriteValue("Frontside", "CitizenName", CitizenName);
             ini.IniWriteValue("Frontside", "CitizenNameView", CitizenNameView.ToString());
+
+            ini.IniWriteValue("Frontside", "CitizenPhone", CitizenPhone);
+            ini.IniWriteValue("Frontside", "CitizenPhoneView", CitizenPhoneView.ToString());
+
+            ini.IniWriteValue("Frontside", "CitizenEmail", CitizenEmail);
+            ini.IniWriteValue("Frontside", "CitizenEmailView", CitizenEmailView.ToString());
+
+            ini.IniWriteValue("Frontside", "TreatmentType", TreatmentType);
             ini.IniWriteValue("Frontside", "TreatmentTypeView", TreatmentTypeView.ToString());
-            ini.IniWriteValue("Frontside", "CorrespondentTypView", CorrespondentTypView.ToString());
+
+            ini.IniWriteValue("Frontside", "CorrespondentType", CorrespondentType);
+            ini.IniWriteValue("Frontside", "CorrespondentTypeView", CorrespondentTypeView.ToString());
+
+            ini.IniWriteValue("Frontside", "CorrespondentSocialStatus", CorrespondentSocialStatus);
+            ini.IniWriteValue("Frontside", "CorrespondentSocialStatusView", CorrespondentSocialStatusView.ToString());
+
+            ini.IniWriteValue("Frontside", "ControlDate", ControlDate);
             ini.IniWriteValue("Frontside", "ControlDateView", ControlDateView.ToString());
+
+            ini.IniWriteValue("Frontside", "ReceivedDate", ReceivedDate);
             ini.IniWriteValue("Frontside", "ReceivedDateView", ReceivedDateView.ToString());
+
+            ini.IniWriteValue("Frontside", "IndexReg", IndexReg);
             ini.IniWriteValue("Frontside", "IndexRegView", IndexRegView.ToString());
+
+            ini.IniWriteValue("Frontside", "RecievedFrom", RecievedFrom);
             ini.IniWriteValue("Frontside", "RecievedFromView", RecievedFromView.ToString());
+
+            ini.IniWriteValue("Frontside", "RecieveSign", RecieveSign);
+            ini.IniWriteValue("Frontside", "RecieveSignView", RecieveSignView.ToString());
+
+            ini.IniWriteValue("Frontside", "SendingDate", SendingDate);
             ini.IniWriteValue("Frontside", "SendingDateView", SendingDateView.ToString());
+
+            ini.IniWriteValue("Frontside", "IndexDoc", IndexDoc);
             ini.IniWriteValue("Frontside", "IndexDocView", IndexDocView.ToString());
+
+            ini.IniWriteValue("Frontside", "RecieveType", RecieveType);
             ini.IniWriteValue("Frontside", "RecieveTypeView", RecieveTypeView.ToString());
+
+            ini.IniWriteValue("Frontside", "TreatmentsBefore", TreatmentsBefore);
             ini.IniWriteValue("Frontside", "TreatmentsBeforeView", TreatmentsBeforeView.ToString());
+
+            ini.IniWriteValue("Frontside", "Question", Question);
             ini.IniWriteValue("Frontside", "QuestionView", QuestionView.ToString());
+
+            ini.IniWriteValue("Frontside", "Subquestion", Subquestion);
             ini.IniWriteValue("Frontside", "SubquestionView", SubquestionView.ToString());
+
+            ini.IniWriteValue("Frontside", "Resolution", Resolution);
             ini.IniWriteValue("Frontside", "ResolutionView", ResolutionView.ToString());
+
+            ini.IniWriteValue("Frontside", "ResolutionAuthor", ResolutionAuthor);
             ini.IniWriteValue("Frontside", "ResolutionAuthorView", ResolutionAuthorView.ToString());
+
+            ini.IniWriteValue("Frontside", "CorrespondentCategory", CorrespondentCategory);
             ini.IniWriteValue("Frontside", "CorrespondentCategoryView", CorrespondentCategoryView.ToString());
+
+            ini.IniWriteValue("Frontside", "ExecuteDaysCount", ExecuteDaysCount);
             ini.IniWriteValue("Frontside", "ExecuteDaysCountView", ExecuteDaysCountView.ToString());
-        #endregion
+            #endregion
             #region Сохранение настроек отображения полей в Обратная сторона
-        ini.IniWriteValue("Backside", "DateWorkingView", DateWorkingView.ToString());
-            ini.IniWriteValue("Backside", "ExecutorView", ExecutorView.ToString());
-            ini.IniWriteValue("Backside", "WorkingNoteView", WorkingNoteView.ToString());
-            ini.IniWriteValue("Backside", "ControlStateView", ControlStateView.ToString());
-            ini.IniWriteValue("Backside", "DateCheckedView", DateCheckedView.ToString());
-            ini.IniWriteValue("Backside", "WorkerCheckedView", WorkerCheckedView.ToString());
-            ini.IniWriteValue("Backside", "WorkingDateView", WorkingDateView.ToString());
-            ini.IniWriteValue("Backside", "CitizenDataView", CitizenDataView.ToString());
-            ini.IniWriteValue("Backside", "AgreedView", AgreedView.ToString());
-            ini.IniWriteValue("Backside", "ReviewResultView", ReviewResultView.ToString());
-            ini.IniWriteValue("Backside", "ControllerView", ControllerView.ToString());
-            ini.IniWriteValue("Backside", "CaseView", CaseView.ToString());
-            ini.IniWriteValue("Backside", "VolumeView", VolumeView.ToString());
-            ini.IniWriteValue("Backside", "PagesCountView", PagesCountView.ToString());
-            ini.IniWriteValue("Backside", "FundView", FundView.ToString());
-            ini.IniWriteValue("Backside", "ReviewView", ReviewView.ToString());
-            ini.IniWriteValue("Backside", "CaseSecondView", CaseSecondView.ToString());
-
             ini.IniWriteValue("Backside", "DateWorking", DateWorking);
-            ini.IniWriteValue("Backside", "Executor", Executor);
-            ini.IniWriteValue("Backside", "WorkingNote", WorkingNote);
-            ini.IniWriteValue("Backside", "ControlState", ControlState);
-            ini.IniWriteValue("Backside", "DateChecked", DateChecked);
-            ini.IniWriteValue("Backside", "WorkerChecked", WorkerChecked);
-            ini.IniWriteValue("Backside", "WorkingDate", WorkingDate);
-            ini.IniWriteValue("Backside", "CitizenData", CitizenData);
-            ini.IniWriteValue("Backside", "Agreed", Agreed);
-            ini.IniWriteValue("Backside", "ReviewResult", ReviewResult);
-            ini.IniWriteValue("Backside", "Controller", Controller);
-            ini.IniWriteValue("Backside", "Case", Case);
-            ini.IniWriteValue("Backside", "Volume", Volume);
-            ini.IniWriteValue("Backside", "Review", Review);
-            ini.IniWriteValue("Backside", "PagesCount", PagesCount);
-            ini.IniWriteValue("Backside", "Fund", Fund);
-            ini.IniWriteValue("Backside", "CaseSecond", CaseSecond);
+            ini.IniWriteValue("Backside", "DateWorkingView", DateWorkingView.ToString());
 
+            ini.IniWriteValue("Backside", "Executor", Executor);
+            ini.IniWriteValue("Backside", "ExecutorView", ExecutorView.ToString());
+
+            ini.IniWriteValue("Backside", "WorkingNote", WorkingNote);
+            ini.IniWriteValue("Backside", "WorkingNoteView", WorkingNoteView.ToString());
+
+            ini.IniWriteValue("Backside", "ControlState", ControlState);
+            ini.IniWriteValue("Backside", "ControlStateView", ControlStateView.ToString());
+
+            ini.IniWriteValue("Backside", "DateChecked", DateChecked);
+            ini.IniWriteValue("Backside", "DateCheckedView", DateCheckedView.ToString());
+
+            ini.IniWriteValue("Backside", "WorkerChecked", WorkerChecked);
+            ini.IniWriteValue("Backside", "WorkerCheckedView", WorkerCheckedView.ToString());
+
+            ini.IniWriteValue("Backside", "WorkingDate", WorkingDate);
+            ini.IniWriteValue("Backside", "WorkingDateView", WorkingDateView.ToString());
+
+            ini.IniWriteValue("Backside", "CitizenData", CitizenData);
+            ini.IniWriteValue("Backside", "CitizenDataView", CitizenDataView.ToString());
+
+            ini.IniWriteValue("Backside", "Agreed", Agreed);
+            ini.IniWriteValue("Backside", "AgreedView", AgreedView.ToString());
+
+            ini.IniWriteValue("Backside", "ReviewResult", ReviewResult);
+            ini.IniWriteValue("Backside", "ReviewResultView", ReviewResultView.ToString());
+
+            ini.IniWriteValue("Backside", "Controller", Controller);
+            ini.IniWriteValue("Backside", "ControllerView", ControllerView.ToString());
+
+            ini.IniWriteValue("Backside", "Case", Case);
+            ini.IniWriteValue("Backside", "CaseView", CaseView.ToString());
+
+            ini.IniWriteValue("Backside", "Volume", Volume);
+            ini.IniWriteValue("Backside", "VolumeView", VolumeView.ToString());
+            
+            ini.IniWriteValue("Backside", "PagesCount", PagesCount);
+            ini.IniWriteValue("Backside", "PagesCountView", PagesCountView.ToString());
 
             ini.IniWriteValue("View", "ControlColor", strControlColor);
             #endregion
@@ -286,8 +331,30 @@ namespace mvCitizenStatement
                 ImportDir = ini.IniReadValue("Directory", "ImportDir");
                 #endregion
                 #region Загрузка настроек отображения полей в Лицевая сторона
+                Id = ini.IniReadValue("Frontside", "Id");
+                IdView = bool.Parse(ini.IniReadValue("Frontside", "IdView"));
+
+                Summary = ini.IniReadValue("Frontside", "Summary");
+                SummaryView = bool.Parse(ini.IniReadValue("Frontside", "SummaryView"));
+
+                CorrespondentSocialStatus = ini.IniReadValue("Frontside", "CorrespondentSocialStatus");
+                CorrespondentSocialStatusView = bool.Parse(ini.IniReadValue("Frontside", "CorrespondentSocialStatusView"));
+
+                RecieveSign = ini.IniReadValue("Frontside", "RecieveSign");
+                RecieveSignView = bool.Parse(ini.IniReadValue("Frontside", "RecieveSignView"));
+
                 CitizenAddress = ini.IniReadValue("Frontside", "CitizenAddress");
+                CitizenAddressView = bool.Parse(ini.IniReadValue("Frontside", "CitizenAddressView"));
+
                 CitizenName = ini.IniReadValue("Frontside", "CitizenName");
+                CitizenNameView = bool.Parse(ini.IniReadValue("Frontside", "CitizenNameView"));
+
+                CitizenPhone = ini.IniReadValue("Frontside", "CitizenPhone");
+                CitizenPhoneView = bool.Parse(ini.IniReadValue("Frontside", "CitizenPhoneView"));
+
+                CitizenEmail = ini.IniReadValue("Frontside", "CitizenEmail");
+                CitizenEmailView = bool.Parse(ini.IniReadValue("Frontside", "CitizenEmailView"));
+
                 TreatmentType = ini.IniReadValue("Frontside", "TreatmentType");
                 CorrespondentType = ini.IniReadValue("Frontside", "CorrespondentType");
                 ControlDate = ini.IniReadValue("Frontside", "ControlDate");
@@ -305,10 +372,9 @@ namespace mvCitizenStatement
                 CorrespondentCategory = ini.IniReadValue("Frontside", "CorrespondentCategory");
                 ExecuteDaysCount = ini.IniReadValue("Frontside", "ExecuteDaysCount");
 
-                CitizenAddressView = bool.Parse(ini.IniReadValue("Frontside", "CitizenAddressView"));
-                CitizenNameView = bool.Parse(ini.IniReadValue("Frontside", "CitizenNameView"));
+
                 TreatmentTypeView = bool.Parse(ini.IniReadValue("Frontside", "TreatmentTypeView"));
-                CorrespondentTypView = bool.Parse(ini.IniReadValue("Frontside", "CorrespondentTypView"));
+                CorrespondentTypeView = bool.Parse(ini.IniReadValue("Frontside", "CorrespondentTypeView"));
                 ControlDateView = bool.Parse(ini.IniReadValue("Frontside", "ControlDateView"));
                 ReceivedDateView = bool.Parse(ini.IniReadValue("Frontside", "ReceivedDateView"));
                 IndexRegView = bool.Parse(ini.IniReadValue("Frontside", "IndexRegView"));
@@ -342,9 +408,6 @@ namespace mvCitizenStatement
                 CaseView = bool.Parse(ini.IniReadValue("Backside", "CaseView"));
                 VolumeView = bool.Parse(ini.IniReadValue("Backside", "VolumeView"));
                 PagesCountView = bool.Parse(ini.IniReadValue("Backside", "PagesCountView"));
-                FundView = bool.Parse(ini.IniReadValue("Backside", "FundView"));
-                ReviewView = bool.Parse(ini.IniReadValue("Backside", "ReviewView"));
-                CaseSecondView = bool.Parse(ini.IniReadValue("Backside", "CaseSecondView"));
 
                 DateWorking = ini.IniReadValue("Backside", "DateWorking");
                 Executor = ini.IniReadValue("Backside", "Executor");
@@ -359,10 +422,7 @@ namespace mvCitizenStatement
                 Controller = ini.IniReadValue("Backside", "Controller");
                 Case = ini.IniReadValue("Backside", "Case");
                 Volume = ini.IniReadValue("Backside", "Volume");
-                Review = ini.IniReadValue("Backside", "Review");
                 PagesCount = ini.IniReadValue("Backside", "PagesCount");
-                Fund = ini.IniReadValue("Backside", "Fund");
-                CaseSecond = ini.IniReadValue("Backside", "CaseSecond");
                 #endregion
             }
             catch

@@ -61,7 +61,7 @@ namespace mvCitizenStatement
         /// </summary>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (MessageBox.Show("Ви дійсно бажаєте видалити запис?", "Видалення", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 var id = dgv.CurrentRow.Cells[0].Value.ToString();
                 switch (CurrentReference)
@@ -99,6 +99,12 @@ namespace mvCitizenStatement
                         break;
                     case "Agreeds":
                         DeleteItem<Agreeds>(Int32.Parse(id));
+                        break;
+                    case "RecieveSigns":
+                        DeleteItem<RecieveSigns>(Int32.Parse(id));
+                        break;
+                    case "CorrespondentSocialStatuses":
+                        DeleteItem<CorrespondentSocialStatuses>(Int32.Parse(id));
                         break;
                 }
                 selectCurrentReference(CurrentReference);
@@ -161,6 +167,12 @@ namespace mvCitizenStatement
                     case "Agreeds":
                         dgv.DataSource = FindItems<Agreeds>(source);
                         break;
+                    case "RecieveSigns":
+                        dgv.DataSource = FindItems<RecieveSigns>(source);
+                        break;
+                    case "CorrespondentSocialStatuses":
+                        dgv.DataSource = FindItems<CorrespondentSocialStatuses>(source);
+                        break;
                 }
                 ShowRecordCount();
             }
@@ -222,6 +234,14 @@ namespace mvCitizenStatement
                     CurrentReference = "Agreeds";
                     dgv.DataSource = ShowItemsData<Agreeds>();
                     break;
+                case "RecieveSigns":
+                    CurrentReference = "RecieveSigns";
+                    dgv.DataSource = ShowItemsData<RecieveSigns>();
+                    break;
+                case "CorrespondentSocialStatuses":
+                    CurrentReference = "CorrespondentSocialStatuses";
+                    dgv.DataSource = ShowItemsData<CorrespondentSocialStatuses>();
+                    break;
             }
             CustomizeDgvReferences();
             ShowRecordCount();
@@ -234,7 +254,7 @@ namespace mvCitizenStatement
             if (dgv.DataSource != null)
             {
                 dgv.Columns[0].Visible = false;
-                dgv.Columns[1].HeaderText = "Наименование";
+                dgv.Columns[1].HeaderText = "Назва";
                 dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgv.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
@@ -268,11 +288,11 @@ namespace mvCitizenStatement
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = "*.xlsx";
             ofd.Filter = "Excel 2007(*.xlsx)|*.xlsx";
-            ofd.Title = "Выберите документ для загрузки данных";
+            ofd.Title = "Оберіть файл для завантаження даних";
             ofd.InitialDirectory = ImportDir;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                this.Text = CurrentReferenceName + "  -  Подождите,происходит импорт данных!";
+                this.Text = CurrentReferenceName + "  -  Зачекайте,відбувається імпорт даних!";
                 switch (CurrentReference)
                 {
                     case "Executants":
@@ -308,6 +328,12 @@ namespace mvCitizenStatement
                     case "Agreeds":
                         ImportReferenceItems<Agreeds>(ofd.FileName);
                         break;
+                    case "RecieveSigns":
+                        ImportReferenceItems<RecieveSigns>(ofd.FileName);
+                        break;
+                    case "CorrespondentSocialStatuses":
+                        ImportReferenceItems<CorrespondentSocialStatuses>(ofd.FileName);
+                        break;
                 }
             }
             this.Text = CurrentReferenceName;
@@ -320,12 +346,12 @@ namespace mvCitizenStatement
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.xlsx";
             sfd.Filter = "Excel 2007(*.xlsx)|*.xlsx";
-            sfd.Title = "Сохранить файл";
+            sfd.Title = "Зберегти файл";
             sfd.InitialDirectory = ImportDir;
             sfd.FileName = CurrentReferenceName;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                this.Text = CurrentReferenceName + "  -  Подождите,происходит экспорт данных!";
+                this.Text = CurrentReferenceName + "  -  Зачекайте,відбувається експорт даних!";
                 switch (CurrentReference)
                 {
                     case "Executants":
@@ -372,9 +398,17 @@ namespace mvCitizenStatement
                         List<Agreeds> Agreeds = (List<Agreeds>)dgv.DataSource;
                         ExportReferenceItems<Agreeds>(sfd.FileName, Agreeds);
                         break;
+                    case "RecieveSigns":
+                        List<RecieveSigns> RecieveSigns = (List<RecieveSigns>)dgv.DataSource;
+                        ExportReferenceItems<RecieveSigns>(sfd.FileName, RecieveSigns);
+                        break;
+                    case "CorrespondentSocialStatuses":
+                        List<CorrespondentSocialStatuses> CorrespondentSocialStatuses = (List<CorrespondentSocialStatuses>)dgv.DataSource;
+                        ExportReferenceItems<CorrespondentSocialStatuses>(sfd.FileName, CorrespondentSocialStatuses);
+                        break;
                 }
                 this.Text = CurrentReferenceName;
-                MessageBox.Show(string.Format("Файл \n {0} \n сохранен!", sfd.FileName));
+                MessageBox.Show(string.Format("Файл \n {0} \n збережено!", sfd.FileName));
             }
         }
     }

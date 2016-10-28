@@ -49,7 +49,12 @@
             this.pnControlColor = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chResolution = new System.Windows.Forms.CheckBox();
+            this.chCitizenEmail = new System.Windows.Forms.CheckBox();
+            this.chCitizenPhone = new System.Windows.Forms.CheckBox();
+            this.chRecieveSign = new System.Windows.Forms.CheckBox();
+            this.chCorrespondentSocialStatus = new System.Windows.Forms.CheckBox();
+            this.chSummary = new System.Windows.Forms.CheckBox();
+            this.chCorrespondentCategory = new System.Windows.Forms.CheckBox();
             this.chSubquestion = new System.Windows.Forms.CheckBox();
             this.chQuestion = new System.Windows.Forms.CheckBox();
             this.chTreatmentsBefore = new System.Windows.Forms.CheckBox();
@@ -67,6 +72,14 @@
             this.chId = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chExecuteDaysCount = new System.Windows.Forms.CheckBox();
+            this.chResolutionAuthor = new System.Windows.Forms.CheckBox();
+            this.chResolution = new System.Windows.Forms.CheckBox();
+            this.chVolume = new System.Windows.Forms.CheckBox();
+            this.chPagesCount = new System.Windows.Forms.CheckBox();
+            this.chCase = new System.Windows.Forms.CheckBox();
+            this.chController = new System.Windows.Forms.CheckBox();
+            this.chReviewResult = new System.Windows.Forms.CheckBox();
             this.chDateChecked = new System.Windows.Forms.CheckBox();
             this.chAgreed = new System.Windows.Forms.CheckBox();
             this.chCitizenDate = new System.Windows.Forms.CheckBox();
@@ -78,17 +91,6 @@
             this.chDateWorking = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnOk = new System.Windows.Forms.Button();
-            this.chVolume = new System.Windows.Forms.CheckBox();
-            this.chReview = new System.Windows.Forms.CheckBox();
-            this.chFund = new System.Windows.Forms.CheckBox();
-            this.chPagesCount = new System.Windows.Forms.CheckBox();
-            this.chCase = new System.Windows.Forms.CheckBox();
-            this.chController = new System.Windows.Forms.CheckBox();
-            this.chReviewResult = new System.Windows.Forms.CheckBox();
-            this.chCaseSecond = new System.Windows.Forms.CheckBox();
-            this.chExecuteDaysCount = new System.Windows.Forms.CheckBox();
-            this.chCorrespondentCategory = new System.Windows.Forms.CheckBox();
-            this.chResolutionAuthor = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -125,7 +127,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(485, 263);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Общие";
+            this.tabPage1.Text = "          Общие          ";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // cbWorkingMode
@@ -183,6 +185,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage5.Controls.Add(this.txtImportDir);
             this.tabPage5.Controls.Add(this.txtReportDir);
             this.tabPage5.Controls.Add(this.txtTemplateDir);
@@ -195,7 +198,7 @@
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(485, 263);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Каталоги";
+            this.tabPage5.Text = "     Каталоги     ";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // txtImportDir
@@ -281,7 +284,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(485, 263);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Входящие";
+            this.tabPage2.Text = "Лицевая сторона";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // pnControlColor
@@ -304,10 +307,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chExecuteDaysCount);
+            this.groupBox2.Controls.Add(this.chCitizenEmail);
+            this.groupBox2.Controls.Add(this.chCitizenPhone);
+            this.groupBox2.Controls.Add(this.chRecieveSign);
+            this.groupBox2.Controls.Add(this.chCorrespondentSocialStatus);
+            this.groupBox2.Controls.Add(this.chSummary);
             this.groupBox2.Controls.Add(this.chCorrespondentCategory);
-            this.groupBox2.Controls.Add(this.chResolutionAuthor);
-            this.groupBox2.Controls.Add(this.chResolution);
             this.groupBox2.Controls.Add(this.chSubquestion);
             this.groupBox2.Controls.Add(this.chQuestion);
             this.groupBox2.Controls.Add(this.chTreatmentsBefore);
@@ -330,20 +335,70 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Видимость полей";
             // 
-            // chResolution
+            // chCitizenEmail
             // 
-            this.chResolution.AutoSize = true;
-            this.chResolution.Location = new System.Drawing.Point(198, 184);
-            this.chResolution.Name = "chResolution";
-            this.chResolution.Size = new System.Drawing.Size(79, 17);
-            this.chResolution.TabIndex = 15;
-            this.chResolution.Text = "Резолюція";
-            this.chResolution.UseVisualStyleBackColor = true;
+            this.chCitizenEmail.AutoSize = true;
+            this.chCitizenEmail.Location = new System.Drawing.Point(15, 159);
+            this.chCitizenEmail.Name = "chCitizenEmail";
+            this.chCitizenEmail.Size = new System.Drawing.Size(125, 17);
+            this.chCitizenEmail.TabIndex = 23;
+            this.chCitizenEmail.Text = "Електронна адреса";
+            this.chCitizenEmail.UseVisualStyleBackColor = true;
+            // 
+            // chCitizenPhone
+            // 
+            this.chCitizenPhone.AutoSize = true;
+            this.chCitizenPhone.Location = new System.Drawing.Point(15, 135);
+            this.chCitizenPhone.Name = "chCitizenPhone";
+            this.chCitizenPhone.Size = new System.Drawing.Size(71, 17);
+            this.chCitizenPhone.TabIndex = 22;
+            this.chCitizenPhone.Text = "Телефон";
+            this.chCitizenPhone.UseVisualStyleBackColor = true;
+            // 
+            // chRecieveSign
+            // 
+            this.chRecieveSign.AutoSize = true;
+            this.chRecieveSign.Location = new System.Drawing.Point(177, 182);
+            this.chRecieveSign.Name = "chRecieveSign";
+            this.chRecieveSign.Size = new System.Drawing.Size(134, 17);
+            this.chRecieveSign.TabIndex = 21;
+            this.chRecieveSign.Text = "Ознака надходження";
+            this.chRecieveSign.UseVisualStyleBackColor = true;
+            // 
+            // chCorrespondentSocialStatus
+            // 
+            this.chCorrespondentSocialStatus.AutoSize = true;
+            this.chCorrespondentSocialStatus.Location = new System.Drawing.Point(177, 42);
+            this.chCorrespondentSocialStatus.Name = "chCorrespondentSocialStatus";
+            this.chCorrespondentSocialStatus.Size = new System.Drawing.Size(160, 17);
+            this.chCorrespondentSocialStatus.TabIndex = 20;
+            this.chCorrespondentSocialStatus.Text = "Соціальний стан заявника";
+            this.chCorrespondentSocialStatus.UseVisualStyleBackColor = true;
+            // 
+            // chSummary
+            // 
+            this.chSummary.AutoSize = true;
+            this.chSummary.Location = new System.Drawing.Point(343, 19);
+            this.chSummary.Name = "chSummary";
+            this.chSummary.Size = new System.Drawing.Size(104, 17);
+            this.chSummary.TabIndex = 19;
+            this.chSummary.Text = "Короткий зміст";
+            this.chSummary.UseVisualStyleBackColor = true;
+            // 
+            // chCorrespondentCategory
+            // 
+            this.chCorrespondentCategory.AutoSize = true;
+            this.chCorrespondentCategory.Location = new System.Drawing.Point(343, 111);
+            this.chCorrespondentCategory.Name = "chCorrespondentCategory";
+            this.chCorrespondentCategory.Size = new System.Drawing.Size(75, 17);
+            this.chCorrespondentCategory.TabIndex = 17;
+            this.chCorrespondentCategory.Text = "Категорія";
+            this.chCorrespondentCategory.UseVisualStyleBackColor = true;
             // 
             // chSubquestion
             // 
             this.chSubquestion.AutoSize = true;
-            this.chSubquestion.Location = new System.Drawing.Point(198, 160);
+            this.chSubquestion.Location = new System.Drawing.Point(343, 89);
             this.chSubquestion.Name = "chSubquestion";
             this.chSubquestion.Size = new System.Drawing.Size(83, 17);
             this.chSubquestion.TabIndex = 14;
@@ -353,7 +408,7 @@
             // chQuestion
             // 
             this.chQuestion.AutoSize = true;
-            this.chQuestion.Location = new System.Drawing.Point(198, 136);
+            this.chQuestion.Location = new System.Drawing.Point(343, 65);
             this.chQuestion.Name = "chQuestion";
             this.chQuestion.Size = new System.Drawing.Size(69, 17);
             this.chQuestion.TabIndex = 13;
@@ -363,7 +418,7 @@
             // chTreatmentsBefore
             // 
             this.chTreatmentsBefore.AutoSize = true;
-            this.chTreatmentsBefore.Location = new System.Drawing.Point(198, 113);
+            this.chTreatmentsBefore.Location = new System.Drawing.Point(343, 42);
             this.chTreatmentsBefore.Name = "chTreatmentsBefore";
             this.chTreatmentsBefore.Size = new System.Drawing.Size(135, 17);
             this.chTreatmentsBefore.TabIndex = 12;
@@ -373,7 +428,7 @@
             // chIndexReg
             // 
             this.chIndexReg.AutoSize = true;
-            this.chIndexReg.Location = new System.Drawing.Point(15, 184);
+            this.chIndexReg.Location = new System.Drawing.Point(177, 65);
             this.chIndexReg.Name = "chIndexReg";
             this.chIndexReg.Size = new System.Drawing.Size(135, 17);
             this.chIndexReg.TabIndex = 11;
@@ -383,7 +438,7 @@
             // chReceivedDate
             // 
             this.chReceivedDate.AutoSize = true;
-            this.chReceivedDate.Location = new System.Drawing.Point(15, 160);
+            this.chReceivedDate.Location = new System.Drawing.Point(15, 42);
             this.chReceivedDate.Name = "chReceivedDate";
             this.chReceivedDate.Size = new System.Drawing.Size(110, 17);
             this.chReceivedDate.TabIndex = 10;
@@ -393,7 +448,7 @@
             // chControlDate
             // 
             this.chControlDate.AutoSize = true;
-            this.chControlDate.Location = new System.Drawing.Point(15, 136);
+            this.chControlDate.Location = new System.Drawing.Point(15, 65);
             this.chControlDate.Name = "chControlDate";
             this.chControlDate.Size = new System.Drawing.Size(74, 17);
             this.chControlDate.TabIndex = 9;
@@ -403,7 +458,7 @@
             // chCorrespondentType
             // 
             this.chCorrespondentType.AutoSize = true;
-            this.chCorrespondentType.Location = new System.Drawing.Point(15, 113);
+            this.chCorrespondentType.Location = new System.Drawing.Point(177, 19);
             this.chCorrespondentType.Name = "chCorrespondentType";
             this.chCorrespondentType.Size = new System.Drawing.Size(96, 17);
             this.chCorrespondentType.TabIndex = 8;
@@ -413,7 +468,7 @@
             // chRecieveType
             // 
             this.chRecieveType.AutoSize = true;
-            this.chRecieveType.Location = new System.Drawing.Point(198, 90);
+            this.chRecieveType.Location = new System.Drawing.Point(177, 158);
             this.chRecieveType.Name = "chRecieveType";
             this.chRecieveType.Size = new System.Drawing.Size(103, 17);
             this.chRecieveType.TabIndex = 7;
@@ -423,7 +478,7 @@
             // chIndexDoc
             // 
             this.chIndexDoc.AutoSize = true;
-            this.chIndexDoc.Location = new System.Drawing.Point(198, 66);
+            this.chIndexDoc.Location = new System.Drawing.Point(177, 135);
             this.chIndexDoc.Name = "chIndexDoc";
             this.chIndexDoc.Size = new System.Drawing.Size(116, 17);
             this.chIndexDoc.TabIndex = 6;
@@ -433,7 +488,7 @@
             // chSendingDate
             // 
             this.chSendingDate.AutoSize = true;
-            this.chSendingDate.Location = new System.Drawing.Point(198, 42);
+            this.chSendingDate.Location = new System.Drawing.Point(177, 111);
             this.chSendingDate.Name = "chSendingDate";
             this.chSendingDate.Size = new System.Drawing.Size(111, 17);
             this.chSendingDate.TabIndex = 5;
@@ -443,7 +498,7 @@
             // chRecievedFrom
             // 
             this.chRecievedFrom.AutoSize = true;
-            this.chRecievedFrom.Location = new System.Drawing.Point(198, 19);
+            this.chRecievedFrom.Location = new System.Drawing.Point(177, 88);
             this.chRecievedFrom.Name = "chRecievedFrom";
             this.chRecievedFrom.Size = new System.Drawing.Size(111, 17);
             this.chRecievedFrom.TabIndex = 4;
@@ -453,7 +508,7 @@
             // chTreatmentType
             // 
             this.chTreatmentType.AutoSize = true;
-            this.chTreatmentType.Location = new System.Drawing.Point(15, 90);
+            this.chTreatmentType.Location = new System.Drawing.Point(15, 182);
             this.chTreatmentType.Name = "chTreatmentType";
             this.chTreatmentType.Size = new System.Drawing.Size(102, 17);
             this.chTreatmentType.TabIndex = 3;
@@ -463,7 +518,7 @@
             // chCitizenName
             // 
             this.chCitizenName.AutoSize = true;
-            this.chCitizenName.Location = new System.Drawing.Point(15, 66);
+            this.chCitizenName.Location = new System.Drawing.Point(15, 89);
             this.chCitizenName.Name = "chCitizenName";
             this.chCitizenName.Size = new System.Drawing.Size(98, 17);
             this.chCitizenName.TabIndex = 2;
@@ -473,7 +528,7 @@
             // chCitizenAddress
             // 
             this.chCitizenAddress.AutoSize = true;
-            this.chCitizenAddress.Location = new System.Drawing.Point(15, 42);
+            this.chCitizenAddress.Location = new System.Drawing.Point(15, 112);
             this.chCitizenAddress.Name = "chCitizenAddress";
             this.chCitizenAddress.Size = new System.Drawing.Size(63, 17);
             this.chCitizenAddress.TabIndex = 1;
@@ -498,15 +553,15 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(485, 263);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Исходящие";
+            this.tabPage3.Text = "Обратная сторона";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chCaseSecond);
+            this.groupBox1.Controls.Add(this.chExecuteDaysCount);
+            this.groupBox1.Controls.Add(this.chResolutionAuthor);
+            this.groupBox1.Controls.Add(this.chResolution);
             this.groupBox1.Controls.Add(this.chVolume);
-            this.groupBox1.Controls.Add(this.chReview);
-            this.groupBox1.Controls.Add(this.chFund);
             this.groupBox1.Controls.Add(this.chPagesCount);
             this.groupBox1.Controls.Add(this.chCase);
             this.groupBox1.Controls.Add(this.chController);
@@ -527,10 +582,90 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Видимость полей";
             // 
+            // chExecuteDaysCount
+            // 
+            this.chExecuteDaysCount.AutoSize = true;
+            this.chExecuteDaysCount.Location = new System.Drawing.Point(17, 67);
+            this.chExecuteDaysCount.Name = "chExecuteDaysCount";
+            this.chExecuteDaysCount.Size = new System.Drawing.Size(95, 17);
+            this.chExecuteDaysCount.TabIndex = 21;
+            this.chExecuteDaysCount.Text = "Кількість днів";
+            this.chExecuteDaysCount.UseVisualStyleBackColor = true;
+            // 
+            // chResolutionAuthor
+            // 
+            this.chResolutionAuthor.AutoSize = true;
+            this.chResolutionAuthor.Location = new System.Drawing.Point(17, 43);
+            this.chResolutionAuthor.Name = "chResolutionAuthor";
+            this.chResolutionAuthor.Size = new System.Drawing.Size(108, 17);
+            this.chResolutionAuthor.TabIndex = 20;
+            this.chResolutionAuthor.Text = "Автор резолюції";
+            this.chResolutionAuthor.UseVisualStyleBackColor = true;
+            // 
+            // chResolution
+            // 
+            this.chResolution.AutoSize = true;
+            this.chResolution.Location = new System.Drawing.Point(17, 19);
+            this.chResolution.Name = "chResolution";
+            this.chResolution.Size = new System.Drawing.Size(79, 17);
+            this.chResolution.TabIndex = 19;
+            this.chResolution.Text = "Резолюція";
+            this.chResolution.UseVisualStyleBackColor = true;
+            // 
+            // chVolume
+            // 
+            this.chVolume.AutoSize = true;
+            this.chVolume.Location = new System.Drawing.Point(171, 161);
+            this.chVolume.Name = "chVolume";
+            this.chVolume.Size = new System.Drawing.Size(47, 17);
+            this.chVolume.TabIndex = 15;
+            this.chVolume.Text = "Том";
+            this.chVolume.UseVisualStyleBackColor = true;
+            // 
+            // chPagesCount
+            // 
+            this.chPagesCount.AutoSize = true;
+            this.chPagesCount.Location = new System.Drawing.Point(171, 184);
+            this.chPagesCount.Name = "chPagesCount";
+            this.chPagesCount.Size = new System.Drawing.Size(66, 17);
+            this.chPagesCount.TabIndex = 12;
+            this.chPagesCount.Text = "Аркушів";
+            this.chPagesCount.UseVisualStyleBackColor = true;
+            // 
+            // chCase
+            // 
+            this.chCase.AutoSize = true;
+            this.chCase.Location = new System.Drawing.Point(171, 137);
+            this.chCase.Name = "chCase";
+            this.chCase.Size = new System.Drawing.Size(63, 17);
+            this.chCase.TabIndex = 11;
+            this.chCase.Text = "Справа";
+            this.chCase.UseVisualStyleBackColor = true;
+            // 
+            // chController
+            // 
+            this.chController.AutoSize = true;
+            this.chController.Location = new System.Drawing.Point(171, 113);
+            this.chController.Name = "chController";
+            this.chController.Size = new System.Drawing.Size(112, 17);
+            this.chController.TabIndex = 10;
+            this.chController.Text = "З контролю зняв";
+            this.chController.UseVisualStyleBackColor = true;
+            // 
+            // chReviewResult
+            // 
+            this.chReviewResult.AutoSize = true;
+            this.chReviewResult.Location = new System.Drawing.Point(171, 89);
+            this.chReviewResult.Name = "chReviewResult";
+            this.chReviewResult.Size = new System.Drawing.Size(171, 17);
+            this.chReviewResult.TabIndex = 9;
+            this.chReviewResult.Text = "Результати розгляду питань";
+            this.chReviewResult.UseVisualStyleBackColor = true;
+            // 
             // chDateChecked
             // 
             this.chDateChecked.AutoSize = true;
-            this.chDateChecked.Location = new System.Drawing.Point(15, 114);
+            this.chDateChecked.Location = new System.Drawing.Point(17, 184);
             this.chDateChecked.Name = "chDateChecked";
             this.chDateChecked.Size = new System.Drawing.Size(126, 17);
             this.chDateChecked.TabIndex = 8;
@@ -540,7 +675,7 @@
             // chAgreed
             // 
             this.chAgreed.AutoSize = true;
-            this.chAgreed.Location = new System.Drawing.Point(167, 19);
+            this.chAgreed.Location = new System.Drawing.Point(171, 66);
             this.chAgreed.Name = "chAgreed";
             this.chAgreed.Size = new System.Drawing.Size(73, 17);
             this.chAgreed.TabIndex = 7;
@@ -550,7 +685,7 @@
             // chCitizenDate
             // 
             this.chCitizenDate.AutoSize = true;
-            this.chCitizenDate.Location = new System.Drawing.Point(15, 184);
+            this.chCitizenDate.Location = new System.Drawing.Point(171, 43);
             this.chCitizenDate.Name = "chCitizenDate";
             this.chCitizenDate.Size = new System.Drawing.Size(68, 17);
             this.chCitizenDate.TabIndex = 6;
@@ -560,7 +695,7 @@
             // chWorkingDate
             // 
             this.chWorkingDate.AutoSize = true;
-            this.chWorkingDate.Location = new System.Drawing.Point(15, 160);
+            this.chWorkingDate.Location = new System.Drawing.Point(171, 19);
             this.chWorkingDate.Name = "chWorkingDate";
             this.chWorkingDate.Size = new System.Drawing.Size(150, 17);
             this.chWorkingDate.TabIndex = 5;
@@ -570,7 +705,7 @@
             // chWorkerChecked
             // 
             this.chWorkerChecked.AutoSize = true;
-            this.chWorkerChecked.Location = new System.Drawing.Point(15, 137);
+            this.chWorkerChecked.Location = new System.Drawing.Point(17, 207);
             this.chWorkerChecked.Name = "chWorkerChecked";
             this.chWorkerChecked.Size = new System.Drawing.Size(130, 17);
             this.chWorkerChecked.TabIndex = 4;
@@ -580,7 +715,7 @@
             // chControlState
             // 
             this.chControlState.AutoSize = true;
-            this.chControlState.Location = new System.Drawing.Point(15, 90);
+            this.chControlState.Location = new System.Drawing.Point(17, 160);
             this.chControlState.Name = "chControlState";
             this.chControlState.Size = new System.Drawing.Size(126, 17);
             this.chControlState.TabIndex = 3;
@@ -590,7 +725,7 @@
             // chWorkingNote
             // 
             this.chWorkingNote.AutoSize = true;
-            this.chWorkingNote.Location = new System.Drawing.Point(15, 66);
+            this.chWorkingNote.Location = new System.Drawing.Point(17, 136);
             this.chWorkingNote.Name = "chWorkingNote";
             this.chWorkingNote.Size = new System.Drawing.Size(63, 17);
             this.chWorkingNote.TabIndex = 2;
@@ -600,7 +735,7 @@
             // chExecutor
             // 
             this.chExecutor.AutoSize = true;
-            this.chExecutor.Location = new System.Drawing.Point(15, 42);
+            this.chExecutor.Location = new System.Drawing.Point(17, 112);
             this.chExecutor.Name = "chExecutor";
             this.chExecutor.Size = new System.Drawing.Size(87, 17);
             this.chExecutor.TabIndex = 1;
@@ -610,7 +745,7 @@
             // chDateWorking
             // 
             this.chDateWorking.AutoSize = true;
-            this.chDateWorking.Location = new System.Drawing.Point(15, 19);
+            this.chDateWorking.Location = new System.Drawing.Point(17, 89);
             this.chDateWorking.Name = "chDateWorking";
             this.chDateWorking.Size = new System.Drawing.Size(109, 17);
             this.chDateWorking.TabIndex = 0;
@@ -619,11 +754,12 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(485, 263);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "О программе";
+            this.tabPage4.Text = " О программе ";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // btnOk
@@ -635,116 +771,6 @@
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // chVolume
-            // 
-            this.chVolume.AutoSize = true;
-            this.chVolume.Location = new System.Drawing.Point(167, 114);
-            this.chVolume.Name = "chVolume";
-            this.chVolume.Size = new System.Drawing.Size(47, 17);
-            this.chVolume.TabIndex = 15;
-            this.chVolume.Text = "Том";
-            this.chVolume.UseVisualStyleBackColor = true;
-            // 
-            // chReview
-            // 
-            this.chReview.AutoSize = true;
-            this.chReview.Location = new System.Drawing.Point(167, 184);
-            this.chReview.Name = "chReview";
-            this.chReview.Size = new System.Drawing.Size(52, 17);
-            this.chReview.TabIndex = 14;
-            this.chReview.Text = "Опис";
-            this.chReview.UseVisualStyleBackColor = true;
-            // 
-            // chFund
-            // 
-            this.chFund.AutoSize = true;
-            this.chFund.Location = new System.Drawing.Point(167, 160);
-            this.chFund.Name = "chFund";
-            this.chFund.Size = new System.Drawing.Size(55, 17);
-            this.chFund.TabIndex = 13;
-            this.chFund.Text = "Фонд";
-            this.chFund.UseVisualStyleBackColor = true;
-            // 
-            // chPagesCount
-            // 
-            this.chPagesCount.AutoSize = true;
-            this.chPagesCount.Location = new System.Drawing.Point(167, 137);
-            this.chPagesCount.Name = "chPagesCount";
-            this.chPagesCount.Size = new System.Drawing.Size(66, 17);
-            this.chPagesCount.TabIndex = 12;
-            this.chPagesCount.Text = "Аркушів";
-            this.chPagesCount.UseVisualStyleBackColor = true;
-            // 
-            // chCase
-            // 
-            this.chCase.AutoSize = true;
-            this.chCase.Location = new System.Drawing.Point(167, 90);
-            this.chCase.Name = "chCase";
-            this.chCase.Size = new System.Drawing.Size(63, 17);
-            this.chCase.TabIndex = 11;
-            this.chCase.Text = "Справа";
-            this.chCase.UseVisualStyleBackColor = true;
-            // 
-            // chController
-            // 
-            this.chController.AutoSize = true;
-            this.chController.Location = new System.Drawing.Point(167, 66);
-            this.chController.Name = "chController";
-            this.chController.Size = new System.Drawing.Size(112, 17);
-            this.chController.TabIndex = 10;
-            this.chController.Text = "З контролю зняв";
-            this.chController.UseVisualStyleBackColor = true;
-            // 
-            // chReviewResult
-            // 
-            this.chReviewResult.AutoSize = true;
-            this.chReviewResult.Location = new System.Drawing.Point(167, 42);
-            this.chReviewResult.Name = "chReviewResult";
-            this.chReviewResult.Size = new System.Drawing.Size(171, 17);
-            this.chReviewResult.TabIndex = 9;
-            this.chReviewResult.Text = "Результати розгляду питань";
-            this.chReviewResult.UseVisualStyleBackColor = true;
-            // 
-            // chCaseSecond
-            // 
-            this.chCaseSecond.AutoSize = true;
-            this.chCaseSecond.Location = new System.Drawing.Point(167, 207);
-            this.chCaseSecond.Name = "chCaseSecond";
-            this.chCaseSecond.Size = new System.Drawing.Size(63, 17);
-            this.chCaseSecond.TabIndex = 16;
-            this.chCaseSecond.Text = "Справа";
-            this.chCaseSecond.UseVisualStyleBackColor = true;
-            // 
-            // chExecuteDaysCount
-            // 
-            this.chExecuteDaysCount.AutoSize = true;
-            this.chExecuteDaysCount.Location = new System.Drawing.Point(361, 67);
-            this.chExecuteDaysCount.Name = "chExecuteDaysCount";
-            this.chExecuteDaysCount.Size = new System.Drawing.Size(95, 17);
-            this.chExecuteDaysCount.TabIndex = 18;
-            this.chExecuteDaysCount.Text = "Кількість днів";
-            this.chExecuteDaysCount.UseVisualStyleBackColor = true;
-            // 
-            // chCorrespondentCategory
-            // 
-            this.chCorrespondentCategory.AutoSize = true;
-            this.chCorrespondentCategory.Location = new System.Drawing.Point(361, 43);
-            this.chCorrespondentCategory.Name = "chCorrespondentCategory";
-            this.chCorrespondentCategory.Size = new System.Drawing.Size(75, 17);
-            this.chCorrespondentCategory.TabIndex = 17;
-            this.chCorrespondentCategory.Text = "Категорія";
-            this.chCorrespondentCategory.UseVisualStyleBackColor = true;
-            // 
-            // chResolutionAuthor
-            // 
-            this.chResolutionAuthor.AutoSize = true;
-            this.chResolutionAuthor.Location = new System.Drawing.Point(361, 19);
-            this.chResolutionAuthor.Name = "chResolutionAuthor";
-            this.chResolutionAuthor.Size = new System.Drawing.Size(108, 17);
-            this.chResolutionAuthor.TabIndex = 16;
-            this.chResolutionAuthor.Text = "Автор резолюції";
-            this.chResolutionAuthor.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
@@ -808,7 +834,6 @@
         private System.Windows.Forms.ComboBox cbWorkingMode;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox chResolution;
         private System.Windows.Forms.CheckBox chSubquestion;
         private System.Windows.Forms.CheckBox chQuestion;
         private System.Windows.Forms.CheckBox chTreatmentsBefore;
@@ -827,15 +852,18 @@
         private System.Windows.Forms.Panel pnControlColor;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chVolume;
-        private System.Windows.Forms.CheckBox chReview;
-        private System.Windows.Forms.CheckBox chFund;
         private System.Windows.Forms.CheckBox chPagesCount;
         private System.Windows.Forms.CheckBox chCase;
         private System.Windows.Forms.CheckBox chController;
         private System.Windows.Forms.CheckBox chReviewResult;
-        private System.Windows.Forms.CheckBox chCaseSecond;
-        private System.Windows.Forms.CheckBox chExecuteDaysCount;
         private System.Windows.Forms.CheckBox chCorrespondentCategory;
+        private System.Windows.Forms.CheckBox chSummary;
+        private System.Windows.Forms.CheckBox chRecieveSign;
+        private System.Windows.Forms.CheckBox chCorrespondentSocialStatus;
+        private System.Windows.Forms.CheckBox chExecuteDaysCount;
         private System.Windows.Forms.CheckBox chResolutionAuthor;
+        private System.Windows.Forms.CheckBox chResolution;
+        private System.Windows.Forms.CheckBox chCitizenEmail;
+        private System.Windows.Forms.CheckBox chCitizenPhone;
     }
 }
