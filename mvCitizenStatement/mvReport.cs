@@ -19,6 +19,8 @@ namespace mvCitizenStatement
         /// <param name="outFileName">Имя выходного файла</param>
         public static void SaveReport(Content values,string tmpName,string outFileName)
         {
+            if (File.Exists(ReportDir + "\\" + outFileName))
+                File.Delete(ReportDir + "\\" + outFileName);
             File.Copy(TemplateDir + tmpName,ReportDir + outFileName);
             using (var outfile = new TemplateProcessor(ReportDir + outFileName).SetRemoveContentControls(true))
             {

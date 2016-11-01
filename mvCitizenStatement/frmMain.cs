@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using static mvCitizenStatement.mvSettings;
 using static mvCitizenStatement.DataModel;
@@ -130,7 +124,7 @@ namespace mvCitizenStatement
             frmNewDatabase frmNewDatabase = new frmNewDatabase();
             if (frmNewDatabase.ShowDialog() == DialogResult.OK)
             {
-                
+
             }
         }
         /// <summary>
@@ -362,14 +356,60 @@ namespace mvCitizenStatement
             #endregion
             //
             SaveReport(Values, "tmp_statement.docx", file);
-                MessageBox.Show("Завершено!");
+            MessageBox.Show("Завершено!");
         }
         private void PrintAllMessage()
         {
-            var file = GetPrepareFilename("рег", dgv.CurrentRow.Cells[4].Value, dgv.CurrentRow.Cells[1].Value, dgv.CurrentRow.Cells[0].Value);
+
             //
-            var Values = new Content();
-            SaveReport(Values, "tmp_statement.docx", file);
+            for (int i = 0; i < dgv.RowCount; i++)
+            {
+                var file = GetPrepareFilename("рег", dgv[4, i].Value, dgv[1, i].Value, dgv[0, i].Value);
+                var Values = new Content();
+
+                #region frontside
+                Values.Fields.Add(GetContent("ReceivedDate", dgv[1, i].Value, true));
+                Values.Fields.Add(GetContent("ControlDate", dgv[2, i].Value, true));
+                Values.Fields.Add(GetContent("CitizenAddress", dgv[3, i].Value));
+                Values.Fields.Add(GetContent("Phone", dgv[5, i].Value));
+                Values.Fields.Add(GetContent("Email", dgv[6, i].Value));
+                Values.Fields.Add(GetContent("CitizenName", dgv[4, i].Value));
+                Values.Fields.Add(GetContent("TreatmentType", dgv[7, i].Value));
+                Values.Fields.Add(GetContent("CorrespondentType", dgv[8, i].Value));
+                Values.Fields.Add(GetContent("RecieveSign", dgv[9, i].Value));
+                Values.Fields.Add(GetContent("IndexReg", dgv[10, i].Value));
+                Values.Fields.Add(GetContent("RecievedFrom", dgv[11, i].Value));
+                Values.Fields.Add(GetContent("SendingDate", dgv[12, i].Value, true));
+                Values.Fields.Add(GetContent("IndexDoc", dgv[13, i].Value));
+                Values.Fields.Add(GetContent("RecieveType", dgv[14, i].Value));
+                Values.Fields.Add(GetContent("Summary", dgv[15, i].Value));
+                Values.Fields.Add(GetContent("TreatmentsBefore", dgv[16, i].Value));
+                Values.Fields.Add(GetContent("Question", dgv[17, i].Value));
+                Values.Fields.Add(GetContent("Subquestion", dgv[18, i].Value));
+                Values.Fields.Add(GetContent("CorrespondentCategory", dgv[19, i].Value));
+                Values.Fields.Add(GetContent("CorrespondentSocialStatus", dgv[20, i].Value));
+                Values.Fields.Add(GetContent("Resolution", dgv[21, i].Value));
+                Values.Fields.Add(GetContent("ResolutionAuthor", dgv[22, i].Value));
+                Values.Fields.Add(GetContent("ExecuteDaysCount", dgv[23, i].Value));
+                #endregion
+                #region backside
+                Values.Fields.Add(GetContent("DateWorking", dgv[24, i].Value, true));
+                Values.Fields.Add(GetContent("Executor", dgv[25, i].Value));
+                Values.Fields.Add(GetContent("WorkingNote", dgv[26, i].Value));
+                Values.Fields.Add(GetContent("ControlState", dgv[27, i].Value));
+                Values.Fields.Add(GetContent("DateChecked", dgv[28, i].Value, true));
+                Values.Fields.Add(GetContent("WorkerChecked", dgv[29, i].Value));
+                Values.Fields.Add(GetContent("WorkingDate", dgv[30, i].Value));
+                Values.Fields.Add(GetContent("CitizenData", dgv[31, i].Value));
+                Values.Fields.Add(GetContent("Agreed", dgv[32, i].Value));
+                Values.Fields.Add(GetContent("ReviewResult", dgv[33, i].Value));
+                Values.Fields.Add(GetContent("Controller", dgv[34, i].Value));
+                Values.Fields.Add(GetContent("Case", dgv[35, i].Value));
+                Values.Fields.Add(GetContent("Volume", dgv[36, i].Value));
+                Values.Fields.Add(GetContent("PagesCount", dgv[37, i].Value));
+                #endregion
+                SaveReport(Values, "tmp_statement.docx", file);
+            }
             MessageBox.Show("Завершено!");
         }
         /// <summary>
@@ -377,7 +417,7 @@ namespace mvCitizenStatement
         /// </summary>
         private void mnPrintSingle_Click(object sender, EventArgs e)
         {
-           try
+            try
             {
                 PrintSingleMessage();
             }
