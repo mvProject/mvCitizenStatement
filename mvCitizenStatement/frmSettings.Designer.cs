@@ -141,6 +141,7 @@
             this.cbWorkingMode.Name = "cbWorkingMode";
             this.cbWorkingMode.Size = new System.Drawing.Size(121, 21);
             this.cbWorkingMode.TabIndex = 5;
+            this.cbWorkingMode.Visible = false;
             // 
             // label7
             // 
@@ -150,6 +151,7 @@
             this.label7.Size = new System.Drawing.Size(137, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = "Открывать при запуске : ";
+            this.label7.Visible = false;
             // 
             // txtDepartmentName
             // 

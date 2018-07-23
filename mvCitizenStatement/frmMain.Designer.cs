@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mnMain = new System.Windows.Forms.MenuStrip();
             this.mnFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnCreate = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,18 +54,18 @@
             this.mnAgreeds = new System.Windows.Forms.ToolStripMenuItem();
             this.mnExecutants = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAddItem = new System.Windows.Forms.ToolStripButton();
+            this.btnEditItem = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.txtFind = new System.Windows.Forms.ToolStripTextBox();
+            this.btnClearFind = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnJournal = new System.Windows.Forms.ToolStripButton();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtRecordCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddItem = new System.Windows.Forms.ToolStripButton();
-            this.btnEditItem = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.btnClearFind = new System.Windows.Forms.ToolStripButton();
-            this.btnJournal = new System.Windows.Forms.ToolStripButton();
             this.mnMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -133,7 +133,7 @@
             // 
             this.mnPrintSingle.Image = global::mvCitizenStatement.Properties.Resources.print;
             this.mnPrintSingle.Name = "mnPrintSingle";
-            this.mnPrintSingle.Size = new System.Drawing.Size(152, 22);
+            this.mnPrintSingle.Size = new System.Drawing.Size(137, 22);
             this.mnPrintSingle.Text = "Один запис";
             this.mnPrintSingle.Click += new System.EventHandler(this.mnPrintSingle_Click);
             // 
@@ -141,7 +141,7 @@
             // 
             this.mnPrintAll.Image = global::mvCitizenStatement.Properties.Resources.print_many;
             this.mnPrintAll.Name = "mnPrintAll";
-            this.mnPrintAll.Size = new System.Drawing.Size(152, 22);
+            this.mnPrintAll.Size = new System.Drawing.Size(137, 22);
             this.mnPrintAll.Text = "Усі записи";
             this.mnPrintAll.Click += new System.EventHandler(this.mnPrintAll_Click);
             // 
@@ -299,6 +299,36 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Enabled = false;
+            this.btnAddItem.Image = global::mvCitizenStatement.Properties.Resources.add;
+            this.btnAddItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(66, 22);
+            this.btnAddItem.Text = "Додати";
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // btnEditItem
+            // 
+            this.btnEditItem.Enabled = false;
+            this.btnEditItem.Image = global::mvCitizenStatement.Properties.Resources.edit3;
+            this.btnEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditItem.Name = "btnEditItem";
+            this.btnEditItem.Size = new System.Drawing.Size(87, 22);
+            this.btnEditItem.Text = "Редагувати";
+            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
+            // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Enabled = false;
+            this.btnDeleteItem.Image = global::mvCitizenStatement.Properties.Resources.delete;
+            this.btnDeleteItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(79, 22);
+            this.btnDeleteItem.Text = "Видалити";
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -311,10 +341,30 @@
             this.txtFind.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFind.TextChanged += new System.EventHandler(this.FindRecords);
             // 
+            // btnClearFind
+            // 
+            this.btnClearFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnClearFind.Image = global::mvCitizenStatement.Properties.Resources.clear;
+            this.btnClearFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClearFind.Name = "btnClearFind";
+            this.btnClearFind.Size = new System.Drawing.Size(23, 22);
+            this.btnClearFind.Text = "toolStripButton1";
+            this.btnClearFind.Click += new System.EventHandler(this.btnClearFind_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnJournal
+            // 
+            this.btnJournal.CheckOnClick = true;
+            this.btnJournal.Image = global::mvCitizenStatement.Properties.Resources.arrow_two_head;
+            this.btnJournal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnJournal.Name = "btnJournal";
+            this.btnJournal.Size = new System.Drawing.Size(71, 22);
+            this.btnJournal.Text = "Журнал";
+            this.btnJournal.Click += new System.EventHandler(this.btnJournal_Click);
             // 
             // dgv
             // 
@@ -325,14 +375,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv.Location = new System.Drawing.Point(5, 53);
             this.dgv.Name = "dgv";
@@ -372,56 +422,6 @@
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Усього записів :";
-            // 
-            // btnAddItem
-            // 
-            this.btnAddItem.Enabled = false;
-            this.btnAddItem.Image = global::mvCitizenStatement.Properties.Resources.add;
-            this.btnAddItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(66, 22);
-            this.btnAddItem.Text = "Додати";
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
-            // btnEditItem
-            // 
-            this.btnEditItem.Enabled = false;
-            this.btnEditItem.Image = global::mvCitizenStatement.Properties.Resources.edit3;
-            this.btnEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditItem.Name = "btnEditItem";
-            this.btnEditItem.Size = new System.Drawing.Size(87, 22);
-            this.btnEditItem.Text = "Редагувати";
-            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
-            // 
-            // btnDeleteItem
-            // 
-            this.btnDeleteItem.Enabled = false;
-            this.btnDeleteItem.Image = global::mvCitizenStatement.Properties.Resources.delete;
-            this.btnDeleteItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteItem.Name = "btnDeleteItem";
-            this.btnDeleteItem.Size = new System.Drawing.Size(79, 22);
-            this.btnDeleteItem.Text = "Видалити";
-            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
-            // 
-            // btnClearFind
-            // 
-            this.btnClearFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnClearFind.Image = global::mvCitizenStatement.Properties.Resources.clear;
-            this.btnClearFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnClearFind.Name = "btnClearFind";
-            this.btnClearFind.Size = new System.Drawing.Size(23, 22);
-            this.btnClearFind.Text = "toolStripButton1";
-            this.btnClearFind.Click += new System.EventHandler(this.btnClearFind_Click);
-            // 
-            // btnJournal
-            // 
-            this.btnJournal.CheckOnClick = true;
-            this.btnJournal.Image = global::mvCitizenStatement.Properties.Resources.arrow_two_head;
-            this.btnJournal.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnJournal.Name = "btnJournal";
-            this.btnJournal.Size = new System.Drawing.Size(71, 22);
-            this.btnJournal.Text = "Журнал";
-            this.btnJournal.Click += new System.EventHandler(this.btnJournal_Click);
             // 
             // frmMain
             // 
